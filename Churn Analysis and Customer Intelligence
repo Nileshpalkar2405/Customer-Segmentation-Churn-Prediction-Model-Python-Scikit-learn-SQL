@@ -1,0 +1,73 @@
+# Churn Analysis & Customer Intelligence
+
+A subscription-business churn analysis pipeline that consolidates customer, subscription, and support data into a single dataset, computes key retention KPIs, and visualizes the drivers behind customer churn.
+
+## 📊 Key Findings
+
+| Metric | Value |
+|---|---|
+| Churn Rate | 28.57% |
+| Retention Rate | 71.43% |
+| ARPU (Avg. Revenue per User) | $18.85 / month |
+| Revenue at Risk | $73.94K |
+| Avg. Customer Tenure | 1,452 days |
+| Escalation Rate | 19.05% |
+| Escalation ↔ Churn Correlation | 0.77 |
+
+**Top insight:** Support escalations correlate with churn at **r = 0.77** — the strongest single signal in the dataset, far outweighing plan type or contract term. The **Basic plan** churns at **60%**, over 4x the rate of Premium (14.29%), despite contributing the least revenue.
+
+## 🛠️ Tech Stack
+
+- **Python** — data cleaning, feature engineering, analysis
+- **Pandas / NumPy** — data manipulation
+- **SQLite** — relational storage and SQL querying
+- **Matplotlib / Seaborn** — data visualization
+- **Jupyter Notebook** — development environment
+
+## 🔍 Project Workflow
+
+1. **Data Import** — Load raw Excel data into a SQLite database, then into Pandas DataFrames
+2. **Data Cleaning** — Handle missing values, standardize categorical fields (e.g. gender), fix data types, remove duplicate support records
+3. **Feature Engineering** — Create `churn_flag`, `tenure_days`, `churn_risk` tiers, and `complaint_count` from raw fields
+4. **Data Merging** — Join customer, subscription, and support tables on `customerid`
+5. **Exploratory Analysis** — Compute churn rate, retention rate, ARPU, revenue at risk, escalation rate, and correlation between escalations and churn
+6. **Visualization** — Monthly churn trend, churn rate by plan/state, correlation heatmap, pairwise feature relationships, and multi-dimensional facet plots
+7. **Pivot Analysis** — Summarize churn and revenue by plan type using pandas pivot tables
+
+## 📁 Repository Structure
+
+```
+├── Churn_Analysis_and_Customer_Intelligence.ipynb   # Main analysis notebook
+├── churn_intelligence_dashboard.html                # Visual summary dashboard
+├── requirements.txt                                 # Python dependencies
+└── README.md
+```
+
+## ▶️ Running the Project
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/churn-analysis-customer-intelligence.git
+cd churn-analysis-customer-intelligence
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch the notebook
+jupyter notebook Churn_Analysis_and_Customer_Intelligence.ipynb
+```
+
+## 💡 Business Recommendations
+
+- **Prioritize escalation resolution** — given the 0.77 correlation with churn, faster/better first-contact resolution on escalated support tickets is likely the highest-leverage retention lever
+- **Target the Basic plan segment** with save-offers or upsell paths to Standard/Premium, where churn drops significantly
+- **Weigh a proactive retention program** against the $73.94K in monthly revenue currently sitting with churned accounts
+
+## 📄 License
+
+This project is for educational and portfolio purposes.
+
+---
+
+Author: Nilesh Palkar — Data Analyst | CA Intermediate | Finance & Analytics
+LinkedIn: https://linkedin.com/in/nilesh-palkar-954122235/
